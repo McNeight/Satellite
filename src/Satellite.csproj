@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>
+      <!-- .NET Standard -->
+      <!--netstandard1.0; netstandard1.1; netstandard1.2; netstandard1.3;-->
+      <!--netstandard1.4; netstandard1.5; netstandard1.6;-->
+      netstandard2.0;
+      <!-- .NET Core -->
+      <!--netcoreapp1.0; netcoreapp1.1;-->
+      netcoreapp2.0; netcoreapp2.1; netcoreapp2.2;
+      <!-- netcoreapp3.0; -->
+      <!-- .NET Framework -->
+      net40;
+      net45; net451; net452;
+      net46; net461; net462;
+      net47; net471; net472;
+      net48;
+    </TargetFrameworks>
+    <RootNamespace>Satellite</RootNamespace>
+    <DocumentationFile>..\artifacts\bin\$(Configuration)\$(TargetFramework)\Satellite.xml</DocumentationFile>
+    <Platforms>AnyCPU</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LogFile>DocFX-$(TargetFramework).log</LogFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Copyright © 2019 Neil McNeight</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DocFX-*.log" />
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CoordinateSharp" Version="2.2.1.1" />
+    <PackageReference Include="docfx.console" Version="2.45.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="UnitsNet" Version="4.37.0" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties _1_1_4docfx_1json__JsonSchema="https://dotnet.github.io/docfx/schemas/v1.0/schema.json" /></VisualStudio></ProjectExtensions>
+
+</Project>
